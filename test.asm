@@ -38,10 +38,11 @@ stest	ends
 ;	アセンブラは、"\n"など、エスケープシーケンスは使えないので、直接、コードを書く。
 Msg		DB	"Hello World.",00Ah,00Ah, 0
 
-Msg1	DB	"s.m_int1 = %d, s.m_int2 = %d",00Ah,0
-Msg2	DB	"v[0] = %d, v[1] = %d",00Ah,0
-Msg3	DB	"argc = %d",00Ah,0
-Msg4	DB	"argv[1] = ",0
+Msg1	DB	"s.m_int1 = %d,",00Ah,"s.m_int2 = %d",00Ah,0
+Msg2	DB	"v[0] = %d,",00Ah,"v[1] = %d",00Ah,0
+
+MsgArg	DB	"argv[%d] = ",0
+MsgCR	DB	00Ah,0
 
 .code
 main	proc	c	public	uses EBX EDI ESI,	argc:SDWORD, argv:PTR PTR BYTE
@@ -54,24 +55,41 @@ main	proc	c	public	uses EBX EDI ESI,	argc:SDWORD, argv:PTR PTR BYTE
 		;-----------------------
 		;コード
 
+		invoke	printf,	offset MsgCR
 		invoke	printf,	offset Msg
 
 		mov		s.m_int1, 10
 		mov		s.m_int2, -20
 
 		invoke	printf,	offset Msg1, s.m_int1, s.m_int2
+		invoke	printf,	offset MsgCR
 
 		mov		v[sizeof(SDWORD) * 0], -1234567
 		mov		v[sizeof(SDWORD) * 1], 7654321
 
 		invoke	printf,	offset Msg2, v[sizeof(SDWORD) * 0], v[sizeof(SDWORD) * 1]
-
-		invoke	printf,	offset Msg3, argc
+		invoke	printf,	offset MsgCR
 
 		mov		ebx, argv
-		invoke	printf,	offset Msg4
-		invoke	printf, [ebx + sizeof(DWORD) * 1]
+		xor		edi, edi
 
+		.while	(edi < argc)
+
+			;		printf("argv[%d] = ", edi);
+			invoke	printf,	offset MsgArg, edi
+
+			;		printf(argv[edi]);
+			invoke	printf, [ebx + edi * sizeof(DWORD)]
+
+			;		printf("\n");
+			invoke	printf,	offset MsgCR
+
+			;		edi++
+			inc		edi
+
+		.endw
+
+		;	return(0);
 		mov		eax, 0
 
 		ret
