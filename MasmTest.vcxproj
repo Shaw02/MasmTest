@@ -20,18 +20,18 @@
   </ItemGroup>
   <ItemGroup>
     <MASM Include="test.asm">
-      <GeneratePreprocessedSourceListing Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GeneratePreprocessedSourceListing>
-      <GeneratePreprocessedSourceListing Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GeneratePreprocessedSourceListing>
-      <ListAllAvailableInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ListAllAvailableInformation>
-      <AddFirstPassListing Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</AddFirstPassListing>
-      <EnableAssemblyGeneratedCodeListing Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</EnableAssemblyGeneratedCodeListing>
-      <EnableFalseConditionalsInListing Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</EnableFalseConditionalsInListing>
-      <ListAllAvailableInformation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ListAllAvailableInformation>
-      <AddFirstPassListing Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</AddFirstPassListing>
-      <EnableAssemblyGeneratedCodeListing Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</EnableAssemblyGeneratedCodeListing>
-      <EnableFalseConditionalsInListing Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</EnableFalseConditionalsInListing>
-      <AssembledCodeListingFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">test.lst</AssembledCodeListingFile>
-      <AssembledCodeListingFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">test.lst</AssembledCodeListingFile>
+      <GeneratePreprocessedSourceListing Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</GeneratePreprocessedSourceListing>
+      <GeneratePreprocessedSourceListing Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</GeneratePreprocessedSourceListing>
+      <ListAllAvailableInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ListAllAvailableInformation>
+      <AddFirstPassListing Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</AddFirstPassListing>
+      <EnableAssemblyGeneratedCodeListing Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</EnableAssemblyGeneratedCodeListing>
+      <EnableFalseConditionalsInListing Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</EnableFalseConditionalsInListing>
+      <ListAllAvailableInformation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ListAllAvailableInformation>
+      <AddFirstPassListing Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</AddFirstPassListing>
+      <EnableAssemblyGeneratedCodeListing Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</EnableAssemblyGeneratedCodeListing>
+      <EnableFalseConditionalsInListing Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</EnableFalseConditionalsInListing>
+      <AssembledCodeListingFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(FileName).lst</AssembledCodeListingFile>
+      <AssembledCodeListingFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(FileName).lst</AssembledCodeListingFile>
       <UseSafeExceptionHandlers Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</UseSafeExceptionHandlers>
       <UseSafeExceptionHandlers Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</UseSafeExceptionHandlers>
     </MASM>
