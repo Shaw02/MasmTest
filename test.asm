@@ -64,7 +64,7 @@ main	proc	c	public	uses EBX EDI ESI,	argc:SDWORD, argv:PTR PTR BYTE
 		mov		v[sizeof(SDWORD) * 0], -1234567
 		mov		v[sizeof(SDWORD) * 1], 7654321
 
-		invoke	printf,	offset Msg2, v[0], v[4]
+		invoke	printf,	offset Msg2, v[sizeof(SDWORD) * 0], v[sizeof(SDWORD) * 1]
 
 		invoke	printf,	offset Msg3, argc
 
